@@ -154,7 +154,7 @@ h1, h2, h3, .logo {
   background-image: url('/hero_suv.png');
   background-size: cover;
   background-position: center;
-  background-attachment: fixed;
+  background-attachment: scroll;
 }
 
 .hero-overlay {
