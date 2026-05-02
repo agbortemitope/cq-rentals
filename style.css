@@ -395,4 +395,8 @@ footer p {
   .booking-form-wrapper {
     padding: 2rem;
   }
+  
+  .hero {
+    background-attachment: scroll;
+  }
 }
