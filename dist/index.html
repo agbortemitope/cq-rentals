@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CQ Rentals | Luxury Rides, Elevated Experience</title>
+    <meta name="description" content="CQ Rentals serving Baltimore & the DMV. Where Every Ride Feels Like VIP. Book your luxury ride today." />
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <script type="module" crossorigin src="/assets/index-BNjoCAgv.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-665OTQtU.css">
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="container nav-container">
+        <a href="#" class="logo">
+          <span class="crown">♕</span>
+          CQ RENTALS
+        </a>
+        <a href="#booking" class="btn btn-outline">Book Now</a>
+      </div>
+    </nav>
+
+    <header class="hero">
+      <div class="hero-overlay"></div>
+      <div class="container hero-content">
+        <h1 class="fade-in-up">Now Accepting Bookings</h1>
+        <p class="subtitle fade-in-up delay-1">Ride in comfort. Arrive in style.<br>Perfect for every special moment.</p>
+        <div class="hero-actions fade-in-up delay-2">
+          <a href="#booking" class="btn btn-primary">Book Your Ride Today</a>
+          <a href="https://instagram.com/cqrentals" target="_blank" class="btn btn-secondary">DM @cqrentals</a>
+        </div>
+      </div>
+    </header>
+
+    <section class="services" id="services">
+      <div class="container">
+        <h2 class="section-title fade-in-up">Our Services</h2>
+        <div class="services-grid">
+          <div class="service-card fade-in-up">
+            <span class="service-icon">🚘</span>
+            <h3>Birthday Transportation</h3>
+          </div>
+          <div class="service-card fade-in-up delay-1">
+            <span class="service-icon">✈️</span>
+            <h3>Airport Transfers</h3>
+          </div>
+          <div class="service-card fade-in-up delay-2">
+            <span class="service-icon">🥂</span>
+            <h3>Date Night Luxury Rides</h3>
+          </div>
+          <div class="service-card fade-in-up">
+            <span class="service-icon">🎉</span>
+            <h3>Event Transportation</h3>
+          </div>
+          <div class="service-card fade-in-up delay-1">
+            <span class="service-icon">💍</span>
+            <h3>Wedding & Nikkah Transport</h3>
+          </div>
+          <div class="service-card fade-in-up delay-2">
+            <span class="service-icon">🌃</span>
+            <h3>City Nights & Special Occasions</h3>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="booking" id="booking">
+      <div class="container booking-container">
+        <div class="booking-info fade-in-up">
+          <h2 class="section-title">Reserve Your VIP Experience</h2>
+          <p>Serving Baltimore & the DMV</p>
+          <div class="contact-details">
+            <p>📞 410-982-5842</p>
+            <p>📸 Instagram: <a href="https://instagram.com/cqrentals" target="_blank">@cqrentals</a></p>
+          </div>
+          <p class="tagline">"Where Every Ride Feels Like VIP."</p>
+        </div>
+        <div class="booking-form-wrapper fade-in-up delay-1">
+          <form class="booking-form" id="rideForm">
+            <div class="form-group">
+              <label for="name">Full Name</label>
+              <input type="text" id="name" name="name" required placeholder="John Doe">
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone Number</label>
+              <input type="tel" id="phone" name="phone" required placeholder="(123) 456-7890">
+            </div>
+            <div class="form-group">
+              <label for="service">Service Needed</label>
+              <select id="service" name="service" required>
+                <option value="" disabled selected>Select a Service</option>
+                <option value="birthday">Birthday Transportation</option>
+                <option value="airport">Airport Transfers</option>
+                <option value="datenight">Date Night Luxury Rides</option>
+                <option value="event">Event Transportation</option>
+                <option value="wedding">Wedding & Nikkah Transport</option>
+                <option value="citynight">City Nights & Special Occasions</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="date">Date of Service</label>
+              <input type="date" id="date" name="date" required>
+            </div>
+            <div class="form-group">
+              <label for="details">Additional Details</label>
+              <textarea id="details" name="details" rows="3" placeholder="Tell us about your trip..."></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary full-width">Submit Request</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="container footer-content">
+        <div class="footer-logo">
+          <span class="crown">♕</span>
+          CQ RENTALS
+        </div>
+        <p>&copy; 2026 CQ Rentals. All Rights Reserved.</p>
+      </div>
+    </footer>
+
+    <!-- EmailJS SDK -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script type="text/javascript">
+      (function(){
+          emailjs.init({
+            publicKey: "your_public_key_here",
+          });
+      })();
+    </script>
+  </body>
+</html>
