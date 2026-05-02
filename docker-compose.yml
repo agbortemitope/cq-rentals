@@ -7,3 +7,12 @@ services:
       dockerfile: Dockerfile.frontend
     ports:
       - "80:80"
+
+netlify:
+    image: netlify/build
+    volumes:
+      - .:/opt/buildhome/repo
+    environment:
+      - NETLIFY_AUTH_TOKEN
+      - NETLIFY_SITE_ID
+    command: build
