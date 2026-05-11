@@ -139,6 +139,12 @@ h1, h2, h3, .logo {
   gap: 0.5rem;
 }
 
+.logo-img {
+  height: 45px;
+  width: auto;
+  object-fit: contain;
+}
+
 .crown {
   font-size: 1.2rem;
 }
@@ -389,11 +395,12 @@ footer {
 .footer-logo {
   font-size: 1.5rem;
   font-family: var(--font-heading);
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.8rem;
+  text-transform: uppercase;
 }
 
 .footer-contact {
