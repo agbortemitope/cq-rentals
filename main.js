@@ -25,7 +25,7 @@ const observer = new IntersectionObserver((entries, observer) => {
   });
 }, observerOptions);
 
-const animatedElements = document.querySelectorAll('.fade-in-up');
+const animatedElements = document.querySelectorAll('.fade-in-up, .fade-in');
 animatedElements.forEach(el => observer.observe(el));
 
 // Form Submission handling
@@ -39,28 +39,29 @@ if (rideForm) {
     btn.textContent = 'Sending...';
     btn.disabled = true;
 
-    const formData = {
-      name: rideForm.name.value,
-      phone: rideForm.phone.value,
-      service: rideForm.service.value,
-      date: rideForm.date.value,
-      details: rideForm.details.value,
-    };
+    const formData = new FormData(rideForm);
+    const data = Object.fromEntries(formData.entries());
+    
+    // Add custom FormSubmit fields
+    data['_subject'] = `New Booking Request from ${data.name}`;
+    data['_template'] = 'table'; // Optional: makes the email look like a table
 
-    try {
-      const response = await fetch('/api/book', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
-      });
+    fetch('https://formsubmit.co/ajax/Crownqualityrentals@gmail.com', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify(data)
+    })
+      .then(response => response.json())
+      .then(result => {
+        if (result.success === 'false') throw new Error(result.message);
 
-      const result = await response.json();
-
-      if (response.ok && result.success) {
         btn.textContent = 'Request Sent!';
         btn.style.background = '#4CAF50';
         btn.style.color = 'white';
-
+        
         setTimeout(() => {
           rideForm.reset();
           btn.textContent = originalText;
@@ -68,21 +69,19 @@ if (rideForm) {
           btn.style.background = '';
           btn.style.color = '';
         }, 3000);
-      } else {
-        throw new Error(result.error || 'Submission failed');
-      }
-    } catch (err) {
-      console.error('Booking error:', err);
-      btn.textContent = 'Error! Try Again.';
-      btn.style.background = '#f44336';
-      btn.style.color = 'white';
-
-      setTimeout(() => {
-        btn.textContent = originalText;
-        btn.disabled = false;
-        btn.style.background = '';
-        btn.style.color = '';
-      }, 3000);
-    }
+      })
+      .catch((error) => {
+        console.error('FAILED...', error);
+        btn.textContent = 'Error! Try Again.';
+        btn.style.background = '#f44336';
+        btn.style.color = 'white';
+        
+        setTimeout(() => {
+          btn.textContent = originalText;
+          btn.disabled = false;
+          btn.style.background = '';
+          btn.style.color = '';
+        }, 3000);
+      });
   });
 }
