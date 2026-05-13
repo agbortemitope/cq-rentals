@@ -44,20 +44,39 @@ if (rideForm) {
     
     // Add custom FormSubmit fields
     data['_subject'] = `New Booking Request from ${data.name}`;
-    data['_template'] = 'table'; // Optional: makes the email look like a table
+    data['_template'] = 'table';
 
-    fetch('https://formsubmit.co/ajax/Crownqualityrentals@gmail.com', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
-      },
-      body: JSON.stringify(data)
-    })
-      .then(response => response.json())
+    const submitToBackend = async () => {
+      try {
+        const response = await fetch('http://localhost:3001/api/book', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data)
+        });
+        if (response.ok) return await response.json();
+        throw new Error('Backend failed');
+      } catch (err) {
+        // Fallback to FormSubmit
+        const response = await fetch('https://formsubmit.co/ajax/Crownqualityrentals@gmail.com', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify(data)
+        });
+        const result = await response.json();
+        if (!response.ok || result.success === 'false' || result.success === false) {
+          throw new Error(result.message || `Server error: ${response.status}`);
+        }
+        return result;
+      }
+    };
+
+    submitToBackend()
       .then(result => {
-        if (result.success === 'false') throw new Error(result.message);
-
         btn.textContent = 'Request Sent!';
         btn.style.background = '#4CAF50';
         btn.style.color = 'white';
