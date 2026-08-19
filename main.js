@@ -51,13 +51,8 @@ if (rideForm) {
     data['_template'] = 'table';
     data['_captcha'] = 'false'; // Disable captcha for AJAX submissions
 
-
-    
-
-
-
     try {
-      const response = await fetch('https://formsubmit.co/ajax/Crownqualityrentals@gmail.com', {
+      const response = await fetch('https://formsubmit.co/ajax/info@cqualityrentals.com', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
