@@ -1,3 +1,26 @@
+import contact from './contact.json';
+
+document.querySelectorAll('[data-contact-phone]').forEach((element) => {
+  element.textContent = contact.phone;
+  if (element instanceof HTMLAnchorElement) {
+    element.href = `tel:${contact.phone.replace(/\D/g, '')}`;
+  }
+});
+
+document.querySelectorAll('[data-contact-email]').forEach((element) => {
+  element.textContent = contact.email;
+  if (element instanceof HTMLAnchorElement) {
+    element.href = `mailto:${contact.email}`;
+  }
+});
+
+document.querySelectorAll('[data-contact-instagram]').forEach((link) => {
+  link.href = contact.instagram.url;
+  link.querySelectorAll('[data-contact-instagram-handle]').forEach((handle) => {
+    handle.textContent = contact.instagram.handle;
+  });
+});
+
 // Navbar scroll effect
 const navbar = document.querySelector('.navbar');
 
@@ -52,7 +75,7 @@ if (rideForm) {
     data['_captcha'] = 'false'; // Disable captcha for AJAX submissions
 
     try {
-      const response = await fetch('https://formsubmit.co/ajax/info@cqualityrentals.com', {
+      const response = await fetch(`https://formsubmit.co/ajax/${encodeURIComponent(contact.bookingRecipient)}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
