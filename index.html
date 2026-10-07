@@ -10,14 +10,21 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <!-- Performance: Preload above-the-fold hero background and logo -->
+    <link rel="preload" as="image" href="/hero_suv.webp" type="image/webp" fetchpriority="high">
+    <link rel="preload" as="image" href="/logo.webp" type="image/webp">
     <link rel="stylesheet" href="/style.css">
-    <link rel="icon" type="image/png" href="/logo.png">
+    <link rel="icon" type="image/webp" href="/logo.webp">
+    <link rel="alternate icon" type="image/png" href="/logo.png">
   </head>
   <body>
     <nav class="navbar">
       <div class="container nav-container">
         <a href="#" class="logo">
-          <img src="/logo.png" alt="CQ Rentals Logo" class="logo-img">
+          <picture>
+            <source srcset="/logo.webp" type="image/webp">
+            <img src="/logo.png" alt="CQ Rentals Logo" class="logo-img" width="45" height="45" fetchpriority="high">
+          </picture>
           CQ RENTALS
         </a>
         <a href="#booking" class="btn btn-outline">Book Now</a>
@@ -125,7 +132,10 @@
     <footer>
       <div class="container footer-content">
         <div class="footer-logo">
-          <img src="/logo.png" alt="CQ Rentals Logo" class="logo-img">
+          <picture>
+            <source srcset="/logo.webp" type="image/webp">
+            <img src="/logo.png" alt="CQ Rentals Logo" class="logo-img" width="45" height="45" loading="lazy">
+          </picture>
           CQ RENTALS
         </div>
         <div class="footer-contact">

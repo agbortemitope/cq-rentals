@@ -153,7 +153,11 @@ h1, h2, h3, .logo {
   align-items: center;
   justify-content: center;
   text-align: center;
-  background-image: url('/hero_suv.png');
+  background-image: url('/hero_suv.webp');
+  background-image: image-set(
+    url('/hero_suv.webp') type('image/webp'),
+    url('/hero_suv.png') type('image/png')
+  );
   background-size: cover;
   background-position: center;
   background-attachment: scroll;
