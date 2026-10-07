@@ -75,7 +75,8 @@ if (rideForm) {
     data['_captcha'] = 'false'; // Disable captcha for AJAX submissions
 
     try {
-      const response = await fetch(`https://formsubmit.co/ajax/${encodeURIComponent(contact.bookingRecipient)}`, {
+      const recipient = contact.bookingRecipient || contact.email;
+      const response = await fetch(`https://formsubmit.co/ajax/${encodeURIComponent(recipient)}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
